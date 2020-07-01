@@ -3,7 +3,7 @@ appVersion: "3.0.1"
 description: Buildkite Agent Metrics
 name: buildkite-agent-metrics
 home: https://github.com/buildkite/buildkite-agent-metrics
-version: 0.1.5
+version: 0.1.7
 sources:
   - https://github.com/buildkite/buildkite-agent-metrics
 maintainers:
