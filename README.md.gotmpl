@@ -1,0 +1,62 @@
+# buildkite-agent-metrics
+
+- Chart can be found at github [seanson/charts-buildkite-agent-metrics](https://github.com/seanson/charts-buildkite-agent-metrics)
+- Installs Buildkite Agent Metrics [buildkite/buildkite-agent-metrics](https://github.com/buildkite/buildkite-agent-metrics)
+
+{{ template "chart.versionLine" . }}
+
+{{ template "chart.valuesSection" . }}
+
+## Development
+
+### Requirements
+
+Install the Helm plugin for managing versions:
+
+```bash
+helm plugin install https://github.com/mbenabda/helm-local-chart-version
+```
+
+### Helm Development
+
+Charts should be developed with Helm3 compatability in mind with Kubernetes 1.14 as the target for API versioning.
+
+Terratest based tests are stored in [tests](./tests) with a public golang Docker container used as a testing basis. Tests can be run with
+
+```bash
+make docker-test
+```
+
+Or if you have the golang libraries locally:
+
+```bash
+make test
+```
+
+### Chart Versioning
+
+All charts should share the same semantic versioning with backwards compatability based on users having to change their `values.yaml` structures. Versions should be changed in `Chart.yaml`, the header of this `README.md`, given a git tag. Changes should be documented in `CHANGELOG.md`.
+
+Please use one of the following `make` targets to bump versions:
+
+Backwards compatible change:
+
+```bash
+make bump-patch
+```
+
+Backwards compatible but minor changes required (Please add to CHANGELOG.md!)
+
+```bash
+make bump-minor
+```
+
+Major incomaptible changes, expectation to uninstall and reinstall (Please add to CHANGELOG.md!)
+
+```bash
+make bump-major
+```
+
+### Documentation
+
+Chart documentation is generated via [helm-docs](https://github.com/norwoodj/helm-docs) and templated via README.md.gotmpl. Once generated they are then formatted with the VS Code default markdown formatter.

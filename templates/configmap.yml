@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "buildkite-agent-metrics.fullname" . }}-config
+  labels:
+    app: {{ template "buildkite-agent-metrics.name" . }}
+    chart: {{ template "buildkite-agent-metrics.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  BUILDKITE_BACKEND: {{ .Values.buildkite.backend | quote }}
+  BUILDKITE_QUEUE: {{ .Values.buildkite.queue | quote }}
+  BUILDKITE_QUIET: {{ .Values.buildkite.quiet | quote }}

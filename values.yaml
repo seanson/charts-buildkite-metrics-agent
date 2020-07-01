@@ -1,0 +1,75 @@
+---
+replicaCount: 1
+
+buildkite:
+  # buildkite.backend -- The name of the backend to use (e.g. cloudwatch, statsd, prometheus or stackdriver).
+  backend: "prometheus"
+  # buildkite.queue -- A comma separated list of Buildkite queues to process (e.g. backend-deploy,ui-deploy). All queues are published if no queue is specified.
+  queue: ""
+  # buildkite.quiet -- A boolean specifying that only ERROR log lines must be printed. (e.g. 1, true).
+  quiet: "false"
+  # buildkite.cloudwatchDimension -- A comma separated list in the form of Key=Value, Other=Value containing the Cloudwatch dimensions to index metrics under.
+  cloudwatchDimensions: ""
+  # buildkite.token -- The Buildkite agent API token to use.
+  token: ""
+
+podAnnotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/port: "8080"
+  prometheus.io/path: "/metrics"
+
+readinessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+  initialDelaySeconds: 30
+  failureThreshold: 10
+
+image:
+  repository: myobplatform/buildkite-metrics
+  tag: 3.0.1
+  pullPolicy: IfNotPresent
+
+service:
+  enabled: false
+  type: ClusterIP
+  ## Provide optional annotations to the service i.e. for external-dns
+  # annotations:
+  ##   external-dns.alpha.kubernetes.io/hostname: yourservicename.k8s.yourcompany.com
+  ##
+  port: 80
+  targetport: 8080
+
+ingress:
+  enabled: false
+  annotations:
+    {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  hosts:
+    - chart-example.local
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources:
+  {}
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

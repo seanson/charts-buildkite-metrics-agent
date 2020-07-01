@@ -1,0 +1,25 @@
+{{- if .Values.service.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "buildkite-agent-metrics.fullname" . }}
+  labels:
+    app: {{ template "buildkite-agent-metrics.name" . }}
+    chart: {{ template "buildkite-agent-metrics.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+{{- with .Values.service.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetport }}
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "buildkite-agent-metrics.name" . }}
+    release: {{ .Release.Name }}
+{{- end }}

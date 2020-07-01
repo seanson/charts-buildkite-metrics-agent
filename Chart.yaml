@@ -1,0 +1,12 @@
+apiVersion: v1
+appVersion: "3.0.1"
+description: VMware vCenter Exporter for Prometheus Helm chart
+name: buildkite-agent-metrics
+home: https://github.com/buildkite/buildkite-agent-metrics
+version: 0.1.0
+sources:
+  - https://github.com/buildkite/buildkite-agent-metrics
+maintainers:
+  - name: seanson
+    email: seandavidjohnson@gmail.com
+engine: gotpl
