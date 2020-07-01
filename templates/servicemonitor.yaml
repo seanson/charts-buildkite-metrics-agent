@@ -1,0 +1,21 @@
+{{- if .Values.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ template "buildkite-agent-metrics.fullname" . }}
+  labels:
+    app: {{ template "buildkite-agent-metrics.name" . }}
+    chart: {{ template "buildkite-agent-metrics.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  endpoints:
+  - port: http
+    interval: {{ .Values.serviceMonitor.interval }}
+    path: {{ .Values.serviceMonitor.path }}
+    scrapeTimeout: {{ .Values.serviceMonitor.scrapeTimeout }}
+  selector:
+    matchLabels:
+      app: {{ template "buildkite-agent-metrics.name" . }}
+      release: {{ .Release.Name }}
+{{- end -}}
