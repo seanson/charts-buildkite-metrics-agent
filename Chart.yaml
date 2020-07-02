@@ -1,12 +1,12 @@
 apiVersion: v1
-appVersion: "3.0.1"
+appVersion: 3.0.1
 description: Buildkite Agent Metrics
-name: buildkite-agent-metrics
-home: https://github.com/buildkite/buildkite-agent-metrics
-version: 0.1.7
-sources:
-  - https://github.com/buildkite/buildkite-agent-metrics
-maintainers:
-  - name: seanson
-    email: seandavidjohnson@gmail.com
 engine: gotpl
+home: https://github.com/buildkite/buildkite-agent-metrics
+maintainers:
+- email: seandavidjohnson@gmail.com
+  name: seanson
+name: buildkite-agent-metrics
+sources:
+- https://github.com/buildkite/buildkite-agent-metrics
+version: 0.1.8

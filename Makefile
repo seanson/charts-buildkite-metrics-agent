@@ -15,6 +15,11 @@ docs:: ## Builds the README.md for charts
 		helm-docs
 		# sed "s/CHART_VERSION/$(CHART_VERSION)/g" README.md.gotmpl > README.md
 
+deploy:: ## Builds and publishes a chart
+		rm -fr .deploy && mkdir .deploy
+		helm3 package . --destination .deploy/
+		cr upload -o seanson -r charts-buildkite-metrics-agent -p .deploy --token "$$CH_TOKEN"
+
 bump-patch:: ## Bumps the charts a patch version
 		helm local-chart-version bump --chart . --version-segment patch
 		make docs

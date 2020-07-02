@@ -3,7 +3,14 @@
 - Chart can be found at github [seanson/charts-buildkite-agent-metrics](https://github.com/seanson/charts-buildkite-agent-metrics)
 - Installs Buildkite Agent Metrics [buildkite/buildkite-agent-metrics](https://github.com/buildkite/buildkite-agent-metrics)
 
-Current chart version is `0.1.7`
+### Installation
+
+```bash
+$ helm repo add seanson https://seanson.github.io/seanson-charts/
+$ helm install seanson/buildkite-agent-metrics
+```
+
+Current chart version is `0.1.8`
 
 ## Chart Values
 
