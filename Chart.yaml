@@ -9,4 +9,4 @@ maintainers:
 name: buildkite-agent-metrics
 sources:
 - https://github.com/buildkite/buildkite-agent-metrics
-version: 0.1.8
+version: 0.2.0

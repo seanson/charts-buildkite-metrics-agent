@@ -8,10 +8,14 @@ buildkite:
   queue: ""
   # buildkite.quiet -- A boolean specifying that only ERROR log lines must be printed. (e.g. 1, true).
   quiet: "false"
+  # buildkite.interval -- A second
+  interval: "30s"
   # buildkite.cloudwatchDimension -- A comma separated list in the form of Key=Value, Other=Value containing the Cloudwatch dimensions to index metrics under.
   cloudwatchDimensions: ""
   # buildkite.token -- The Buildkite agent API token to use.
   token: ""
+  # buildkite.stackdriverProjectId -- The target project ID to write Stackdriver metrics to, used when backend is set to "stackdriver"
+  stackdriverProjectId: ""
 
 podAnnotations:
   prometheus.io/scrape: "true"

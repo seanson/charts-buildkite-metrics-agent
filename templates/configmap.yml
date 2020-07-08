@@ -11,3 +11,6 @@ data:
   BUILDKITE_BACKEND: {{ .Values.buildkite.backend | quote }}
   BUILDKITE_QUEUE: {{ .Values.buildkite.queue | quote }}
   BUILDKITE_QUIET: {{ .Values.buildkite.quiet | quote }}
+  BUILDKITE_INTERVAL: {{ .Values.buildkite.interval | quote }}
+  BUILDKITE_STACKDRIVER_PROJECTID: {{ .Values.buildkite.stackdriverProjectId | quote }}
+  BUILDKITE_CLOUDWATCH_DIMENSIONS: {{ .Values.buildkite.stackdriverProjectId | quote }}

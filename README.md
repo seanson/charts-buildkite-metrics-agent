@@ -10,7 +10,7 @@ $ helm repo add seanson https://seanson.github.io/seanson-charts/
 $ helm install seanson/buildkite-agent-metrics
 ```
 
-Current chart version is `0.1.8`
+Current chart version is `0.2.0`
 
 ## Chart Values
 
@@ -19,8 +19,10 @@ Current chart version is `0.1.8`
 | affinity | object | `{}` |  |
 | buildkite.backend | string | `"prometheus"` | The name of the backend to use (e.g. cloudwatch, statsd, prometheus or stackdriver). |
 | buildkite.cloudwatchDimensions | string | `""` |  |
+| buildkite.interval | string | `"30s"` | A second |
 | buildkite.queue | string | `""` | A comma separated list of Buildkite queues to process (e.g. backend-deploy,ui-deploy). All queues are published if no queue is specified. |
 | buildkite.quiet | string | `"false"` | A boolean specifying that only ERROR log lines must be printed. (e.g. 1, true). |
+| buildkite.stackdriverProjectId | string | `""` | The target project ID to write Stackdriver metrics to, used when backend is set to "stackdriver" |
 | buildkite.token | string | `""` | The Buildkite agent API token to use. |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"seanson/buildkite-metrics-agent"` |  |
