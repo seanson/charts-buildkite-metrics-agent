@@ -37,7 +37,7 @@ livenessProbe:
 image:
   repository: seanson/buildkite-metrics-agent
   tag: v5.2.0
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   enabled: false
