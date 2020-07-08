@@ -23,6 +23,7 @@ spec:
 {{ toYaml . | indent 8 }}
 {{- end }}
     spec:
+      serviceAccountName: {{ template "buildkite-agent-metrics.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -36,10 +37,12 @@ spec:
                 name: {{ template "buildkite-agent-metrics.fullname" . }}-config
             - secretRef:
                 name: {{ template "buildkite-agent-metrics.fullname" . }}-secret
+{{- if eq .Values.buildkite.backend "prometheus" }}
           livenessProbe:
 {{ toYaml .Values.livenessProbe | indent 12 }}
           readinessProbe:
 {{ toYaml .Values.readinessProbe | indent 12 }}
+{{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}

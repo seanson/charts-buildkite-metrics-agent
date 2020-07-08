@@ -10,7 +10,7 @@ $ helm repo add seanson https://seanson.github.io/seanson-charts/
 $ helm install seanson/buildkite-agent-metrics
 ```
 
-Current chart version is `0.3.0`
+Current chart version is `0.4.4`
 
 ## Chart Values
 
@@ -37,9 +37,7 @@ Current chart version is `0.3.0`
 | livenessProbe.httpGet.port | int | `8080` |  |
 | livenessProbe.initialDelaySeconds | int | `30` |  |
 | nodeSelector | object | `{}` |  |
-| podAnnotations."prometheus.io/path" | string | `"/metrics"` |  |
-| podAnnotations."prometheus.io/port" | string | `"8080"` |  |
-| podAnnotations."prometheus.io/scrape" | string | `"true"` |  |
+| podAnnotations | object | `{}` |  |
 | readinessProbe.httpGet.path | string | `"/metrics"` |  |
 | readinessProbe.httpGet.port | int | `8080` |  |
 | replicaCount | int | `1` |  |
@@ -48,6 +46,9 @@ Current chart version is `0.3.0`
 | service.port | int | `80` |  |
 | service.targetport | int | `8080` |  |
 | service.type | string | `"ClusterIP"` |  |
+| serviceAccount.annotations | object | `{}` |  |
+| serviceAccount.create | bool | `true` |  |
+| serviceAccount.name | string | `nil` |  |
 | serviceMonitor.enabled | bool | `false` |  |
 | serviceMonitor.interval | string | `"30s"` |  |
 | serviceMonitor.path | string | `"/metrics"` |  |
