@@ -34,6 +34,7 @@ livenessProbe:
     port: 8080
   initialDelaySeconds: 30
   failureThreshold: 10
+  timeoutSeconds: 10
 
 image:
   repository: seanson/buildkite-metrics-agent
