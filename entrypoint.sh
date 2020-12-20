@@ -7,8 +7,11 @@ BUILDKITE_STACKDRIVER_PROJECTID="${BUILDKITE_STACKDRIVER_PROJECTID:-}"
 BUILDKITE_CLOUDWATCH_DIMENSIONS="${BUILDKITE_CLOUDWATCH_DIMENSIONS:-}"
 
 if [ "${BUILDKITE_QUEUE}" != "" ]; then
-    echo "Configuring run for single queue ${BUILDKITE_QUEUE}"
-    EXTRA_ARGS="${EXTRA_ARGS} -queue ${BUILDKITE_QUEUE}"
+    echo "Configuring run for queues in  ${BUILDKITE_QUEUE}"
+    QUEUES=$(echo $BUILDKITE_QUEUE | tr "," "\n")
+    for QUEUE in $QUEUES; do
+        EXTRA_ARGS="${EXTRA_ARGS} -queue ${QUEUE}"
+    done
 fi
 
 if [ "${BUILDKITE_STACKDRIVER_PROJECTID}" != "" ]; then
