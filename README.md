@@ -10,7 +10,7 @@ $ helm repo add seanson https://seanson.github.io/seanson-charts/
 $ helm install seanson/buildkite-agent-metrics
 ```
 
-Current chart version is `0.4.4`
+Current chart version is `0.5.0`
 
 ## Chart Values
 
@@ -36,6 +36,7 @@ Current chart version is `0.4.4`
 | livenessProbe.httpGet.path | string | `"/metrics"` |  |
 | livenessProbe.httpGet.port | int | `8080` |  |
 | livenessProbe.initialDelaySeconds | int | `30` |  |
+| livenessProbe.timeoutSeconds | int | `10` |  |
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | readinessProbe.httpGet.path | string | `"/metrics"` |  |
