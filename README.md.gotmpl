@@ -24,6 +24,16 @@ Install the Helm plugin for managing versions:
 helm plugin install https://github.com/mbenabda/helm-local-chart-version
 ```
 
+### Releases
+
+Export your `CH_TOKEN` from GitHub.
+
+```bash
+make release
+```
+
+Then run the indexing script in the `seanson-charts` repository.
+
 ### Helm Development
 
 Charts should be developed with Helm3 compatability in mind with Kubernetes 1.14 as the target for API versioning.
